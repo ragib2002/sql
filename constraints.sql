@@ -1,0 +1,24 @@
+CREATE DATABASE Mangata_Gallo;
+USE Mangata_Gallo; 
+
+CREATE TABLE Clients (
+    ClientID INT NOT NULL PRIMARY KEY,
+    FullName VARCHAR(100) NOT NULL,
+    PhoneNumber INT NOT NULL UNIQUE
+);
+
+CREATE TABLE Item (
+    ItemID INT NOT NULL PRIMARY KEY,
+    ItemName VARCHAR(100) NOT NULL,
+    Price DECIMAL(5,2) NOT NULL
+);
+
+CREATE TABLE Orders (
+    OrderID INT NOT NULL PRIMARY KEY,
+    ClientID INT NOT NULL,
+    ItemID INT NOT NULL,
+    Quantity INT NOT NULL CHECK (Quantity <= 3),
+    Cost DECIMAL(6,2) NOT NULL,
+    FOREIGN KEY (ClientID) REFERENCES Clients(ClientID),
+    FOREIGN KEY (ItemID) REFERENCES Item(ItemID)
+);
