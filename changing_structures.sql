@@ -1,0 +1,21 @@
+CREATE DATABASE Mangata_Gallo;
+USE Mangata_Gallo;
+
+CREATE TABLE Staff (
+    StaffID INT,
+    FullName VARCHAR(100),
+    PhoneNumber VARCHAR(10)
+);
+
+ALTER TABLE Staff
+MODIFY StaffID INT NOT NULL,
+MODIFY FullName VARCHAR(100) NOT NULL,
+MODIFY PhoneNumber INT NOT NULL,
+ADD PRIMARY KEY (StaffID);
+
+ALTER TABLE Staff
+ADD Role VARCHAR(50) NOT NULL;
+
+ALTER TABLE Staff
+DROP COLUMN PhoneNumber;
+
